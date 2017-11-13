@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Roster
+{
+    class Team
+    {
+        List<Player> players = new List<Player>();
+        int id=0;
+
+        public string TeamName { get; set; }
+
+        public Team(string _teamName)
+        {
+            players = new List<Player>();
+            TeamName = _teamName;
+        }
+
+        public void AddPlayer()
+        {
+            id++;
+            if (id>=53)
+            {
+                Console.WriteLine("You can't have more than 53 players in your roster");
+            }
+            else
+            {
+                Player tmpPlayer = new Player();
+                players.Add(tmpPlayer);
+            }
+        }
+
+        public void RemovePlayer(int _id)
+        {
+            foreach(Player person in players)
+            {
+                if (person.JerseyNr == _id)
+                    players.Remove(person);
+            }
+        }
+
+        public Player FindPlayer(int _jerseyNr)
+        {
+            foreach(Player person in players)
+            {
+                if (person.JerseyNr == _jerseyNr)
+                {
+                    return person;
+                }
+            }
+            return new Player();
+                
+        }
+
+        public void WriteTeamPlayers()
+        {
+            Console.WriteLine("Team: " + TeamName + "\n");
+            foreach (Player person in players)
+                person.WritePlayer();
+        }
+    }
+}
