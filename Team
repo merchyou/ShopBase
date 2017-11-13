@@ -9,7 +9,7 @@ namespace Roster
     class Team
     {
         List<Player> players = new List<Player>();
-        int id=0;
+        
 
         public string TeamName { get; set; }
 
@@ -21,7 +21,7 @@ namespace Roster
 
         public void AddPlayer()
         {
-            id++;
+            int id = players.Count;
             if (id>=53)
             {
                 Console.WriteLine("You can't have more than 53 players in your roster");
