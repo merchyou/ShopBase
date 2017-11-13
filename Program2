@@ -21,15 +21,17 @@ namespace Roster
                 Console.WriteLine("1. Add player to a list");
                 Console.WriteLine("2. Add player to your team roster");
                 Console.WriteLine("3. Remove player from your team roster");
-                Console.WriteLine("4. Find players in the list");
-                Console.WriteLine("5. Show all your team players");
-                Console.WriteLine("6. Show all players");
+                Console.WriteLine("4. Find players in the list(by Jersey number)");
+                Console.WriteLine("5. Find players in the list (by last name)");
+                Console.WriteLine("6. Show all your team players");
+                Console.WriteLine("7. Show all players");
 
                 int choice = 0;
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch(choice)
                 {
+
                     case 1:
                         {
                             Console.WriteLine("put in name:");
@@ -44,6 +46,7 @@ namespace Roster
                             ListOfPlayers.AddPlayerToList(tmpPlayer);
                             break;
                         }
+
                     case 2:
                         {
                             Console.WriteLine("Put in players last name:");
@@ -52,6 +55,7 @@ namespace Roster
                             Roster.AddPlayer(tmpPlayer);
                             break;
                         }
+
                     case 3:
                         {
                             Console.WriteLine("Put in players last name:");
@@ -63,43 +67,43 @@ namespace Roster
 
                     case 4:
                         {
-                            Console.WriteLine("Find #1: by Jersey number or #2: by last name?");
-                            int findChoice = Convert.ToInt32(Console.ReadLine());
-                            switch (findChoice)
-                            {
-                                case 1:
-                                    {
-                                        Console.WriteLine("What's jersey nr then?");
-                                        int _jerseyNr = Convert.ToInt32(Console.ReadLine());
-                                        ListOfPlayers.FindPlayerByJrsNr(_jerseyNr);
-                                        break;
-                                    }
-                                case 2:
-                                    {
-                                        Console.WriteLine("What's last name then?");
-                                        string _lastName = Console.ReadLine();
-                                        ListOfPlayers.FindPlayer(_lastName);
-                                        break;
-                                    }
-                            }
+                            Console.WriteLine("What's jersey nr then?");
+                            int _jerseyNr = Convert.ToInt32(Console.ReadLine());
+                            ListOfPlayers.FindPlayerByJrsNr(_jerseyNr);
                             break;
+                            
                         }
 
                     case 5:
                         {
+                            Console.WriteLine("What's last name then?");
+                            string _lastName = Console.ReadLine();
+                            ListOfPlayers.FindPlayer(_lastName);
+                            break;
+                        }
+
+                    case 6:
+                        {
                             Roster.WriteTeamPlayers();
                             break;
                         }
-                    case 6:
+
+                    case 7:
                         {
                             ListOfPlayers.WriteTeamPlayers();
                             break;
                         }
 
-                    
+                    default:
+                        {
+                            Console.WriteLine("This is not an option!");
+                            break;
+                        }
+
                 }
 
             }
         }
     }
 }
+
